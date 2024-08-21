@@ -14,7 +14,14 @@
     <Description>An application to view RTSP streams.</Description>
     <Copyright>Orbital, Inc.</Copyright>
     <PackageIcon>old ios camera.png</PackageIcon>
+    <StartupObject>CameraViewer.Program</StartupObject>
+    <AssemblyName>Camera Viewer</AssemblyName>
+    <ApplicationIcon>old ios camera.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="old ios camera.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.BonusSkins" Version="24.1.5" />

@@ -1,3 +1,5 @@
+using DevExpress.XtraSplashScreen;
+
 namespace CameraViewer;
 
 internal static class Program
@@ -9,6 +11,12 @@ internal static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-        Application.Run(new MainScreen());
+        SplashScreenManager.ShowForm(typeof(Forms.Splash));
+        var mainForm = new Main();
+        mainForm.Hide();
+        Thread.Sleep(TimeSpan.FromSeconds(5));
+        SplashScreenManager.CloseForm();
+        mainForm.Show();
+        Application.Run(mainForm);
     }
 }
