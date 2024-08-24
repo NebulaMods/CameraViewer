@@ -15,22 +15,15 @@ public partial class Main : DevExpress.XtraBars.ToolbarForm.ToolbarForm
     public Main()
     {
         InitializeComponent();
+        RtspFeed.BackColor = this.BackColor;
         videoView = RtspFeed;
         StartRtspStream();
     }
 
-    private void Main_Load(object sender, EventArgs e)
-    {
-    }
-
-    private void Main_Shown(object sender, EventArgs e)
-    {
-    }
-
     internal static void StartRtspStream()
     {
-        //loadingScreen = new LoadingScreen();
-        //loadingScreen.Show();
+        loadingScreen = new Loading();
+        loadingScreen.Show();
         var (username, password) = RtspViewer.RetrieveCredentialsFromRegistry();
         var rtspUrl = RtspViewer.RetrieveRtspUrlFromRegistry();
         if (string.IsNullOrEmpty(rtspUrl))
@@ -102,5 +95,38 @@ public partial class Main : DevExpress.XtraBars.ToolbarForm.ToolbarForm
                 settingsScreen.Dispose();
                 break;
         }
+    }
+
+    private void StartRtspFeedButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+        if (rtspViewer == null)
+        {
+            StartRtspStream();
+        }
+    }
+
+    private void PauseRtspFeedButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+        videoView?.MediaPlayer?.SetPause(true);
+    }
+
+    private void StopRtspFeedButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+        rtspViewer?.StopRtspStream();
+        rtspViewer?.Dispose();
+        rtspViewer = null;
+    }
+
+    private void RestartRtspFeedButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+        rtspViewer?.StopRtspStream();
+        rtspViewer?.Dispose();
+        rtspViewer = null;
+        StartRtspStream();
+    }
+
+    private void ResumeRtspFeedButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+    {
+        videoView?.MediaPlayer?.SetPause(false);
     }
 }

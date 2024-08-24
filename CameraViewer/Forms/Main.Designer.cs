@@ -39,6 +39,12 @@ partial class Main
         barDockControlRight = new DevExpress.XtraBars.BarDockControl();
         SkinSelectorDropDown = new DevExpress.XtraBars.SkinDropDownButtonItem();
         SettingsButton = new DevExpress.XtraBars.BarButtonItem();
+        MediaControlsSubMenu = new DevExpress.XtraBars.BarSubItem();
+        StartRtspFeedButton = new DevExpress.XtraBars.BarButtonItem();
+        ResumeRtspFeedButton = new DevExpress.XtraBars.BarButtonItem();
+        PauseRtspFeedButton = new DevExpress.XtraBars.BarButtonItem();
+        StopRtspFeedButton = new DevExpress.XtraBars.BarButtonItem();
+        RestartRtspFeedButton = new DevExpress.XtraBars.BarButtonItem();
         ((System.ComponentModel.ISupportInitialize)RtspFeed).BeginInit();
         ((System.ComponentModel.ISupportInitialize)ToolBar).BeginInit();
         ((System.ComponentModel.ISupportInitialize)ToolBarManager).BeginInit();
@@ -47,11 +53,12 @@ partial class Main
         // RtspFeed
         // 
         RtspFeed.BackColor = Color.Black;
+        RtspFeed.BackgroundImageLayout = ImageLayout.None;
         RtspFeed.Dock = DockStyle.Fill;
         RtspFeed.Location = new Point(0, 31);
         RtspFeed.MediaPlayer = null;
         RtspFeed.Name = "RtspFeed";
-        RtspFeed.Size = new Size(660, 383);
+        RtspFeed.Size = new Size(698, 418);
         RtspFeed.TabIndex = 0;
         RtspFeed.Text = "RtspFeed";
         // 
@@ -60,11 +67,12 @@ partial class Main
         ToolBar.Location = new Point(0, 0);
         ToolBar.Manager = ToolBarManager;
         ToolBar.Name = "ToolBar";
-        ToolBar.Size = new Size(660, 31);
+        ToolBar.Size = new Size(698, 31);
         ToolBar.TabIndex = 1;
         ToolBar.TabStop = false;
         ToolBar.TitleItemLinks.Add(SkinSelectorDropDown);
         ToolBar.TitleItemLinks.Add(SettingsButton);
+        ToolBar.TitleItemLinks.Add(MediaControlsSubMenu);
         ToolBar.ToolbarForm = this;
         // 
         // ToolBarManager
@@ -74,8 +82,8 @@ partial class Main
         ToolBarManager.DockControls.Add(barDockControlLeft);
         ToolBarManager.DockControls.Add(barDockControlRight);
         ToolBarManager.Form = this;
-        ToolBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { SkinSelectorDropDown, SettingsButton });
-        ToolBarManager.MaxItemId = 2;
+        ToolBarManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { SkinSelectorDropDown, SettingsButton, MediaControlsSubMenu, RestartRtspFeedButton, StartRtspFeedButton, StopRtspFeedButton, PauseRtspFeedButton, ResumeRtspFeedButton });
+        ToolBarManager.MaxItemId = 12;
         // 
         // barDockControlTop
         // 
@@ -83,15 +91,15 @@ partial class Main
         barDockControlTop.Dock = DockStyle.Top;
         barDockControlTop.Location = new Point(0, 31);
         barDockControlTop.Manager = ToolBarManager;
-        barDockControlTop.Size = new Size(660, 0);
+        barDockControlTop.Size = new Size(698, 0);
         // 
         // barDockControlBottom
         // 
         barDockControlBottom.CausesValidation = false;
         barDockControlBottom.Dock = DockStyle.Bottom;
-        barDockControlBottom.Location = new Point(0, 414);
+        barDockControlBottom.Location = new Point(0, 449);
         barDockControlBottom.Manager = ToolBarManager;
-        barDockControlBottom.Size = new Size(660, 0);
+        barDockControlBottom.Size = new Size(698, 0);
         // 
         // barDockControlLeft
         // 
@@ -99,15 +107,15 @@ partial class Main
         barDockControlLeft.Dock = DockStyle.Left;
         barDockControlLeft.Location = new Point(0, 31);
         barDockControlLeft.Manager = ToolBarManager;
-        barDockControlLeft.Size = new Size(0, 383);
+        barDockControlLeft.Size = new Size(0, 418);
         // 
         // barDockControlRight
         // 
         barDockControlRight.CausesValidation = false;
         barDockControlRight.Dock = DockStyle.Right;
-        barDockControlRight.Location = new Point(660, 31);
+        barDockControlRight.Location = new Point(698, 31);
         barDockControlRight.Manager = ToolBarManager;
-        barDockControlRight.Size = new Size(0, 383);
+        barDockControlRight.Size = new Size(0, 418);
         // 
         // SkinSelectorDropDown
         // 
@@ -128,12 +136,70 @@ partial class Main
         SettingsButton.Name = "SettingsButton";
         SettingsButton.ItemClick += SettingsButton_ItemClick;
         // 
+        // MediaControlsSubMenu
+        // 
+        MediaControlsSubMenu.Caption = "Media Options";
+        MediaControlsSubMenu.Hint = "Media playback options";
+        MediaControlsSubMenu.Id = 5;
+        MediaControlsSubMenu.ImageOptions.Image = Properties.Resources.video_16x162;
+        MediaControlsSubMenu.ImageOptions.LargeImage = Properties.Resources.video_32x322;
+        MediaControlsSubMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(StartRtspFeedButton), new DevExpress.XtraBars.LinkPersistInfo(ResumeRtspFeedButton), new DevExpress.XtraBars.LinkPersistInfo(PauseRtspFeedButton), new DevExpress.XtraBars.LinkPersistInfo(StopRtspFeedButton), new DevExpress.XtraBars.LinkPersistInfo(RestartRtspFeedButton) });
+        MediaControlsSubMenu.Name = "MediaControlsSubMenu";
+        MediaControlsSubMenu.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+        // 
+        // StartRtspFeedButton
+        // 
+        StartRtspFeedButton.Caption = "Start RTSP Stream";
+        StartRtspFeedButton.Id = 8;
+        StartRtspFeedButton.ImageOptions.Image = Properties.Resources.next_16x16;
+        StartRtspFeedButton.ImageOptions.LargeImage = Properties.Resources.next_32x32;
+        StartRtspFeedButton.Name = "StartRtspFeedButton";
+        StartRtspFeedButton.ItemClick += StartRtspFeedButton_ItemClick;
+        // 
+        // ResumeRtspFeedButton
+        // 
+        ResumeRtspFeedButton.Caption = "Resume RTSP Stream";
+        ResumeRtspFeedButton.Id = 11;
+        ResumeRtspFeedButton.ImageOptions.Image = Properties.Resources.play_16x161;
+        ResumeRtspFeedButton.ImageOptions.LargeImage = Properties.Resources.play_32x321;
+        ResumeRtspFeedButton.Name = "ResumeRtspFeedButton";
+        ResumeRtspFeedButton.ItemClick += ResumeRtspFeedButton_ItemClick;
+        // 
+        // PauseRtspFeedButton
+        // 
+        PauseRtspFeedButton.Caption = "Pause RTSP Stream";
+        PauseRtspFeedButton.Id = 10;
+        PauseRtspFeedButton.ImageOptions.Image = Properties.Resources.pause_16x16;
+        PauseRtspFeedButton.ImageOptions.LargeImage = Properties.Resources.pause_32x32;
+        PauseRtspFeedButton.Name = "PauseRtspFeedButton";
+        PauseRtspFeedButton.ItemClick += PauseRtspFeedButton_ItemClick;
+        // 
+        // StopRtspFeedButton
+        // 
+        StopRtspFeedButton.Caption = "Stop RTSP Stream";
+        StopRtspFeedButton.Id = 9;
+        StopRtspFeedButton.ImageOptions.Image = Properties.Resources.stop_16x16;
+        StopRtspFeedButton.ImageOptions.LargeImage = Properties.Resources.stop_32x32;
+        StopRtspFeedButton.Name = "StopRtspFeedButton";
+        StopRtspFeedButton.ItemClick += StopRtspFeedButton_ItemClick;
+        // 
+        // RestartRtspFeedButton
+        // 
+        RestartRtspFeedButton.Caption = "Restart RTSP Stream";
+        RestartRtspFeedButton.Id = 6;
+        RestartRtspFeedButton.ImageOptions.Image = Properties.Resources.refreshallpivottable_16x16;
+        RestartRtspFeedButton.ImageOptions.LargeImage = Properties.Resources.refreshallpivottable_32x32;
+        RestartRtspFeedButton.Name = "RestartRtspFeedButton";
+        RestartRtspFeedButton.ItemClick += RestartRtspFeedButton_ItemClick;
+        // 
         // Main
         // 
+        ActiveGlowColor = Color.MediumSlateBlue;
+        Appearance.Options.UseFont = true;
         AutoScaleDimensions = new SizeF(6F, 13F);
         AutoScaleMode = AutoScaleMode.Font;
         AutoSizeMode = AutoSizeMode.GrowAndShrink;
-        ClientSize = new Size(660, 414);
+        ClientSize = new Size(698, 449);
         Controls.Add(RtspFeed);
         Controls.Add(barDockControlLeft);
         Controls.Add(barDockControlRight);
@@ -142,13 +208,12 @@ partial class Main
         Controls.Add(ToolBar);
         FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Glow;
         IconOptions.Icon = (Icon)resources.GetObject("Main.IconOptions.Icon");
+        InactiveGlowColor = Color.BlueViolet;
         Name = "Main";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Camera Viewer";
         ToolbarFormControl = ToolBar;
         TopMost = true;
-        Load += Main_Load;
-        Shown += Main_Shown;
         ((System.ComponentModel.ISupportInitialize)RtspFeed).EndInit();
         ((System.ComponentModel.ISupportInitialize)ToolBar).EndInit();
         ((System.ComponentModel.ISupportInitialize)ToolBarManager).EndInit();
@@ -167,4 +232,10 @@ partial class Main
     private DevExpress.XtraBars.BarDockControl barDockControlRight;
     private DevExpress.XtraBars.SkinDropDownButtonItem SkinSelectorDropDown;
     private DevExpress.XtraBars.BarButtonItem SettingsButton;
+    private DevExpress.XtraBars.BarSubItem MediaControlsSubMenu;
+    private DevExpress.XtraBars.BarButtonItem RestartRtspFeedButton;
+    private DevExpress.XtraBars.BarButtonItem StartRtspFeedButton;
+    private DevExpress.XtraBars.BarButtonItem StopRtspFeedButton;
+    private DevExpress.XtraBars.BarButtonItem PauseRtspFeedButton;
+    private DevExpress.XtraBars.BarButtonItem ResumeRtspFeedButton;
 }

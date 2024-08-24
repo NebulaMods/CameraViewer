@@ -17,6 +17,7 @@
     <StartupObject>CameraViewer.Program</StartupObject>
     <AssemblyName>Camera Viewer</AssemblyName>
     <ApplicationIcon>old ios camera.ico</ApplicationIcon>
+    <Version>1.0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
